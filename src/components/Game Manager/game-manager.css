@@ -1,0 +1,45 @@
+.player-names {
+    color: purple; 
+}
+
+.participants {
+    display: flex;
+    justify-content: space-evenly;
+    width: 30%
+}
+
+.scoreboard {
+    width: 20%; 
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.score-tracker-btn {
+    width: 100px; 
+    height: 25px; 
+    background-color: #fff;
+    border-color: blue;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.score-tracker-btn:hover {
+    background-color: skyblue;
+}
+
+.game-options {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pause-game {
+    background-color: thistle;
+}
+
+.continue-game {
+    background-color: turquoise;
+}
+
+.serving {
+    background-color: turquoise;
+}
