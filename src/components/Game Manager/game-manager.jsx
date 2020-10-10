@@ -50,6 +50,15 @@ export default () => {
      const winsBTracker = () => {
        setplayerBWins((prevPlayerBWins) => prevPlayerBWins + 1);
      };
+
+     const scoresATracker = () => {
+       setPlayerAScore((prevPlayerAScore) => prevPlayerAScore + 1);
+     };
+
+     const scoresBTracker = () => {
+       setPlayerBScore((prevPlayerBScore) => prevPlayerBScore + 1);
+     };
+
     return (
       <div>
         <div>
@@ -140,13 +149,11 @@ export default () => {
             </div>
             <div className="scoreboard">
               <button
-                // onClick={scoreATracker}
-                onClick={() => setPlayerAScore(playerAScore + 1)}
+                onClick={scoresATracker}
                 className="score-tracker-btn"
               >{`${playerA}: ${playerAScore}`}</button>
               <button 
-                // onClick={scoreBTracker} 
-                onClick={() => setPlayerBScore(playerBScore + 1)}
+                onClick={scoresBTracker}
                 className="score-tracker-btn">
                 {`${playerB} ${playerBScore}`}
               </button>
