@@ -32,33 +32,27 @@ export default () => {
         }
     } 
 
-    const roundTracker = () => {
-        setRound(prevRound => prevRound + 1);
-    }
+    const roundTracker = () => setRound(round =>round + 1);
+    
 
-    const gamesATracker = () => {
-        setPlayerAGames(prevPlayerAGames => prevPlayerAGames + 1)
-    }
+    const gamesATracker = () => setPlayerAGames(playerAGames + 1);
+    
 
-    const winsATracker = () => {
-        setplayerAWins(prevPlayerAWins => prevPlayerAWins + 1)
-    }
+    const winsATracker = () => setplayerAWins(playerAWins + 1);
+  
 
-     const gamesBTracker = () => {
-       setPlayerBGames((prevPlayerAGames) => prevPlayerAGames + 1);
-     };
-     const winsBTracker = () => {
-       setplayerBWins((prevPlayerBWins) => prevPlayerBWins + 1);
-     };
+     const gamesBTracker = () => setPlayerBGames(playerAGames + 1);
+     
 
-     const scoresATracker = () => {
-       setPlayerAScore((prevPlayerAScore) => prevPlayerAScore + 1);
-     };
+     const winsBTracker = () => setplayerBWins(playerBWins + 1);
+  
 
-     const scoresBTracker = () => {
-       setPlayerBScore((prevPlayerBScore) => prevPlayerBScore + 1);
-     };
+     const scoresATracker = () => setPlayerAScore(playerAScore + 1);
+     
 
+     const scoresBTracker = () => setPlayerBScore(playerBScore + 1);
+  
+  
     return (
       <div>
         <div>
