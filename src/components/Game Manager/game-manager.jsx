@@ -4,9 +4,10 @@ import firebaseDB from '../../utils/firebase.js';
 import './game-manager.css';
 
 export default () => {
+    const initialAScore = 0; 
     const [playerA, setPlayerA] = useState("Carol");
     const [playerB, setPlayerB] = useState("Jonathan");
-    const [playerAScore, setPlayerAScore] = useState(0);
+    const [playerAScore, setPlayerAScore] = useState(initialAScore);
     const [playerBScore, setPlayerBScore] = useState(0);
     const [playerAWins, setplayerAWins] = useState(0);
     const [playerBWins, setplayerBWins] = useState(0);
@@ -34,15 +35,14 @@ export default () => {
         }
     } 
 
-    const roundTracker = () => setRound(round =>round + 1);
+    const roundTracker = () => setRound(prevRound => prevRound + 1);
     const gamesATracker = () => setPlayerAGames(playerAGames + 1);
     const winsATracker = () => setplayerAWins(playerAWins + 1);
     const gamesBTracker = () => setPlayerBGames(playerAGames + 1);
     const winsBTracker = () => setplayerBWins(playerBWins + 1);
-    // const scoresATracker = () => setPlayerAScore(playerAScore + 1);
 
     const scoresATracker = () => {
-      setPlayerAScore(playerAScore + 1);
+      setPlayerAScore(prevAScore => prevAScore + 1);
       firebaseDB.child(playerA).push(playerAScore); 
       }
 
