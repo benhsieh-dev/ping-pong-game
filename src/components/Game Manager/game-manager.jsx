@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import firebaseDB from '../../utils/firebase.js';
+
 import './game-manager.css';
 
 export default () => {
@@ -33,24 +35,22 @@ export default () => {
     } 
 
     const roundTracker = () => setRound(round =>round + 1);
-    
-
     const gamesATracker = () => setPlayerAGames(playerAGames + 1);
-    
-
     const winsATracker = () => setplayerAWins(playerAWins + 1);
-  
+    const gamesBTracker = () => setPlayerBGames(playerAGames + 1);
+    const winsBTracker = () => setplayerBWins(playerBWins + 1);
+    // const scoresATracker = () => setPlayerAScore(playerAScore + 1);
 
-     const gamesBTracker = () => setPlayerBGames(playerAGames + 1);
-     
+    const scoresATracker = () => {
+      setPlayerAScore(playerAScore + 1);
+      firebaseDB.child(playerA).push(playerAScore); 
+      }
 
-     const winsBTracker = () => setplayerBWins(playerBWins + 1);
-  
+    const scoresBTracker = () => {
+      setPlayerBScore(playerBScore + 1)
+      firebaseDB.child(playerB).push(playerBScore);
+    };
 
-     const scoresATracker = () => setPlayerAScore(playerAScore + 1);
-     
-
-     const scoresBTracker = () => setPlayerBScore(playerBScore + 1);
   
   
     return (
