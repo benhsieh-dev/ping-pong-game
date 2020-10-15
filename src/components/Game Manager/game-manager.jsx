@@ -4,10 +4,9 @@ import firebaseDB from '../../utils/firebase.js';
 import './game-manager.css';
 
 export default () => {
-    const initialAScore = 0; 
     const [playerA, setPlayerA] = useState("Carol");
     const [playerB, setPlayerB] = useState("Jonathan");
-    const [playerAScore, setPlayerAScore] = useState(initialAScore);
+    const [playerAScore, setPlayerAScore] = useState(0);
     const [playerBScore, setPlayerBScore] = useState(0);
     const [playerAWins, setplayerAWins] = useState(0);
     const [playerBWins, setplayerBWins] = useState(0);
@@ -41,10 +40,12 @@ export default () => {
     const gamesBTracker = () => setPlayerBGames(playerAGames + 1);
     const winsBTracker = () => setplayerBWins(playerBWins + 1);
 
-    const scoresATracker = () => {
-      setPlayerAScore(prevAScore => prevAScore + 1);
-      firebaseDB.child(playerA).push(playerAScore); 
-      }
+    function scoresATracker() {
+      const newScore = playerAScore + 1; 
+    setPlayerAScore(newScore);
+    }
+      
+      // firebaseDB.child(playerA).push(playerAScore); 
 
     const scoresBTracker = () => {
       setPlayerBScore(playerBScore + 1)
@@ -61,7 +62,7 @@ export default () => {
           <br />
           <span>Name:</span> {playerB} <span>Wins:</span> {playerBWins}
         </div>
-        <form>
+        <div>
           <h2>Participants</h2>
           <div className="player-names">
             <label>Please enter player A name</label>
@@ -143,7 +144,7 @@ export default () => {
             </div>
             <div className="scoreboard">
               <button
-                onClick={scoresATracker}
+                onClick={() => setPlayerAScore(playerAScore + 1)}
                 className="score-tracker-btn"
               >{`${playerA}: ${playerAScore}`}</button>
               <button 
@@ -153,7 +154,7 @@ export default () => {
               </button>
             </div>
           </div>
-        </form>
+        </div>
         <div>{gameTracker(playerAScore, playerBScore, playerA, playerB)}</div>
         <div className="game-options">
           <button className="pause-game">Pause Game</button>
